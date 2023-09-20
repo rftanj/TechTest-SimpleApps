@@ -1,0 +1,91 @@
+﻿@using TechnicalTest.Helper;
+@using TechnicalTest.Models.DB;
+@using TechnicalTest.Models.DTO
+@model PaginationHelper<TransactionDTO>
+@{
+    ViewData["Title"] = "Transaction Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Transaction Data</h1>
+    <div class="col text-right">
+        <a href="@Url.Action("Create", "Transaction")" class="btn btn-primary mb-3">
+            Add Data
+        </a>
+    </div>
+    <table class="table" border="1">
+        <tr>
+            <th>Transaction Id</th>
+            <th>Customer Name</th>
+            <th>Book Title</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Created Date</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>@data.TransactionId</td>
+                <td>@data.CustomerName</td>
+                <td>@data.BookTitle</td>
+                <td>@data.BorrowDate.ToString("dd/MM/yyyy")</td>
+                <td>@data.ReturnDate.ToString("dd/MM/yyyy")</td>
+                <td>@data.CreatedDate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a href="@Url.Action("Update", "Transaction", new { id = @data.TransactionId })" class="btn btn-sm btn-info">Update</a>
+                    <input type="button" class="btn btn-sm btn-danger" value="Delete" onclick="deleteData(@data.TransactionId)" />
+                </td>
+            </tr>
+        }
+    </table>
+    @{
+    var prevDisabled =
+        !Model.HasPrevPage ? "disabled" : "";
+    var nextDisabled =
+        !Model.HasNextPage ? "disabled" : "";
+    }
+
+    <section class="project-detail section-padding-half">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 mx-auto col-md-10 col-12 mt-lg-5 text-center" data-aos="fade-up">
+                    <div>
+                        <a asp-action="Index" style="float:right;"
+                            asp-route-pageNumber="@(Model.PageIndex +1)"
+                            class="btn btn-sm btn-primary  @nextDisabled ">
+                            Next
+                        </a>
+                    </div>
+                    <div>
+                        <a asp-action="Index" style="float:right"
+                            asp-route-pageNumber="@(Model.PageIndex -1)"
+                            class="btn btn-sm btn-primary @prevDisabled">
+                            Previous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Html.AntiForgeryToken()
+    <form asp-controller="Transaction" asp-action="Delete" method="post" id="deletedatas">
+            <input type="text" name="Id" id="deleteId" style="display:none">
+    </form>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+@section Scripts{
+    <script>
+        function deleteData(transactionId) 
+        {
+            console.log(transactionId);
+            if (window.confirm("Are you sure want to delete this data?")) {
+                document.getElementById("deleteId").value = transactionId;
+                document.getElementById("deletedatas").submit();
+            }
+        }
+    </script>
+}

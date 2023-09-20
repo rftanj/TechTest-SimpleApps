@@ -1,0 +1,48 @@
+﻿@model TransactionsParameter;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Peminjaman Buku</title>
+</head>
+<body>
+    <h1>Form Peminjaman Buku</h1>
+
+@Html.AntiForgeryToken()
+    
+<div class="row">
+    <div class="col-12">
+        <form asp-controller="Transaction" asp-action="Create" method="post">
+            <div class="form-group">
+                <label>Customer Name</label>
+                <Select asp-items="@Model.Customers" asp-for="CustomerId" class="form-control">
+                    <option value="">Select Customer</option>
+                </Select>
+                @*<span asp-validation-for="Title" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label>Book Title</label>
+                <Select asp-items="@Model.Books" asp-for="BookId" class="form-control">
+                    <option value="">Select Book</option>
+                </Select>
+                @*<span asp-validation-for="Content" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <label>Borrow Date</label>
+                <input type="date" asp-for="BorrowDate" class="form-control" />
+                @*<span asp-validation-for="Author" class="text-danger"></span>*@
+            </div
+            <div class="form-group">
+                <label>Return Date</label>
+                <input type="date" asp-for="ReturnDate" class="form-control" />
+                @*<span asp-validation-for="Author" class="text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Save Data</button>
+                <a href="@Url.Action("Index","Transaction")" class="btn btn-info">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

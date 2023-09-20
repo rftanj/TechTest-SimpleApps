@@ -1,0 +1,62 @@
+﻿@using TechnicalTest.Helper;
+@using TechnicalTest.Models.DB;
+@model PaginationHelper<Customer>
+@{
+    ViewData["Title"] = "Customer Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Customer Data</h1>
+       <table class="table" border="1">
+            <tr>
+                <th>Customer Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+            </tr>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@data.Id</td>
+                    <td>@data.Name</td>
+                    <td>@data.Address</td>
+                    <td>@data.City</td>
+                    <td>@data.CreatedDate.ToString("dd/MM/yyyy")</td>
+                    <td>@data.UpdatedDate.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </table>
+
+        @{
+        var prevDisabled =
+            !Model.HasPrevPage ? "disabled" : "";
+        var nextDisabled =
+            !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <section class="project-detail section-padding-half">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 mx-auto col-md-10 col-12 mt-lg-5 text-center" data-aos="fade-up">
+                        <div>
+                            <a asp-action="Index" style="float:right;"
+                               asp-route-pageNumber="@(Model.PageIndex +1)"
+                               class="btn btn-sm btn-primary  @nextDisabled ">
+                                Next
+                            </a>
+                        </div>
+                        <div>
+                            <a asp-action="Index" style="float:right"
+                               asp-route-pageNumber="@(Model.PageIndex -1)"
+                               class="btn btn-sm btn-primary @prevDisabled">
+                                Previous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

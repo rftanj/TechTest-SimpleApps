@@ -1,0 +1,74 @@
+﻿@using TechnicalTest.Helper;
+@using TechnicalTest.Models.DB;
+@model PaginationHelper<Book>
+@{
+    ViewData["Title"] = "Book Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Book Data</h1>
+       <table class="table" border="1">
+            <tr>
+                <th>Book Id</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Released Date</th>
+                <th>Stock</th>
+                <th>Created Date</th>
+                <th>Updated Date</th>
+            </tr>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td>@data.Id</td>
+                    <td>@data.Title</td>
+                    <td>@data.Author</td>
+                    <td>@data.ReleasedDate.ToString("dd/MM/yyyy")</td>
+                    <td>@data.Stock</td>
+                    <td>@data.CreatedDate.ToString("dd/MM/yyyy")</td>
+                    <td>@data.UpdateDate.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </table>
+
+        @{
+        var prevDisabled =
+            !Model.HasPrevPage ? "disabled" : "";
+        var nextDisabled =
+            !Model.HasNextPage ? "disabled" : "";
+        }
+
+        <section class="project-detail section-padding-half">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 mx-auto col-md-10 col-12 mt-lg-5 text-center" data-aos="fade-up">
+                        <div>
+                            <a asp-action="Index" style="float:right;"
+                               asp-route-pageNumber="@(Model.PageIndex +1)"
+                               class="btn btn-sm btn-primary  @nextDisabled ">
+                                Next
+                            </a>
+                        </div>
+                        <div>
+                            <a asp-action="Index" style="float:right"
+                               asp-route-pageNumber="@(Model.PageIndex -1)"
+                               class="btn btn-sm btn-primary @prevDisabled">
+                                Previous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        if(ViewBag.Success == true)
+        {
+            //swal("Success", "@ViewBag.Message", "success");
+            window.alert("Update Success");
+        }     
+
+    </script>
+}

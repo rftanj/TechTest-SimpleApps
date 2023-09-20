@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechnicalTest", "TechnicalTest\TechnicalTest.csproj", "{6B3DFFF5-FEC8-4542-8F5C-32C9FD6E801E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{FC80867F-0E81-4193-A9B9-2A2F4D94A97B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{80DE440C-DD8C-4FDB-8B15-523536202616}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B3DFFF5-FEC8-4542-8F5C-32C9FD6E801E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B3DFFF5-FEC8-4542-8F5C-32C9FD6E801E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B3DFFF5-FEC8-4542-8F5C-32C9FD6E801E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B3DFFF5-FEC8-4542-8F5C-32C9FD6E801E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC80867F-0E81-4193-A9B9-2A2F4D94A97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC80867F-0E81-4193-A9B9-2A2F4D94A97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC80867F-0E81-4193-A9B9-2A2F4D94A97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC80867F-0E81-4193-A9B9-2A2F4D94A97B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DE440C-DD8C-4FDB-8B15-523536202616}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DE440C-DD8C-4FDB-8B15-523536202616}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DE440C-DD8C-4FDB-8B15-523536202616}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DE440C-DD8C-4FDB-8B15-523536202616}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C931B716-3E23-4046-AACA-B80C8B673959}
+	EndGlobalSection
+EndGlobal
